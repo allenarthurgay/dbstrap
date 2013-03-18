@@ -1,12 +1,16 @@
 {
     "name": "dbstrap",
     "description": "simple db wrapper around cradle to provide an abstraction layer",
-    "version": "0.0.1",
+    "version": "0.0.5",
     "main": "./lib/db.js",
     "analyze":false,
     "dependencies":{
         "async": "0.1.x",
         "cradle":"0.6.x"
+    },
+    "devDependencies":{
+        "chai":"*",
+        "mocha":"*"
     },
     "engines":{
         "node": ">=0.8"
