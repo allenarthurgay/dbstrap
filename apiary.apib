@@ -1,0 +1,307 @@
+FORMAT: 1A
+HOST: http://devppm.daptiv.com
+
+# Resource Plan
+Resource Plan
+
+## Resource Plans collection [/projects/{projectId}/resourceplans/{dateGrouping}]
+### List all resource plans for a project [GET]
+
++ Parameters
+    
+    + projectId (string) ... ID of the project
+    + dateGrouping (string) ... `week` or `month` - method by which to group the contained resources according to date rule
+        
++ Request
+    
+    + Headers
+        
+            Accept: application/json
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "object": {
+                    "href": "/projects/{projectId}/resourceplans/{dateGrouping}",
+                        "url": "http://devppm.daptiv.com/_api/projects/{projectId}/resourceplans/{dateGrouping}",
+                        "schemaUrl" : "...",
+                        "data":[
+                            "timeline": [
+                                {
+                                    "startDate": "...",
+                                    "endDate": "...",
+                                    "groupKey" : "201401"
+                                },
+                                {
+                                    "startDate": "...",
+                                    "endDate": "...",
+                                    "groupKey" : "201402"
+                                },
+                                {
+                                    "startDate": "...",
+                                    "endDate": "...",
+                                    "groupKey" : "201403"
+                                }
+                            ]
+                        ],
+                        "items":[
+                            "resourceplans/{dateGrouping}/201401",
+                            "resourceplans/{dateGrouping}/201402",
+                            "resourceplans/{dateGrouping}/201403"
+                        ]
+                }
+            }
+            
+## Resource Plan timeline group [/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}]
+### Return the project timeline plan for a timeline group [GET]
++ Parameters
+
+    + projectId (string) ... ID of the project
+    + dateGrouping (string) ... `week` or `month` - method by which to group the contained resources according to date rule
+    + groupKey (string) ... timeline bucket key
+        
++ Request
+    
+    + Headers
+        
+            Accept: application/json
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "object":{
+                    "href": "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}",
+                    "url": "http://devppm.daptiv.com/_api/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}",
+                    "schemaUrl" : "...",
+                    "items":[
+                        "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/resource-type-id-dev",
+                        "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/resource-type-id-test",
+                        "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/resource-type-id-manager"
+                    ]
+                }
+            }
+          
+
+## Resource plan bucket for a resource type in a bucket [/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}]
+### Return the project timeline bucket for a resource type [GET]
++ Parameters
+
+    + projectId (string) ... ID of the project
+    + dateGrouping (string) ... `week` or `month` - method by which to group the contained resources according to date rule
+    + groupKey (string) ... timeline bucket key
+    + resourceTypeId (string) ... ID of the resource type    
+        
++ Request
+    
+    + Headers
+        
+            Accept: application/json
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "object":{
+                    "href": "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/",
+                    "url": "http://devppm.daptiv.com/_api/projects/{projectId}/resourceplans/{dateGrouping}/{resourceTypeId}",
+                    "schemaUrl" : "...",
+                    "data" : {
+                        "resourceType" : "resourceType/{resourceTypeId}"
+                    },
+                    "items":[
+                        "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/requirements",
+                        "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/allocations",
+                        "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/taskassignments",
+                        "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/workentries"
+                    ]
+                }
+            }
+
+
+## Requirements for a given bucket in a resource type resource plan [/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/requirements]
+### Return the requirement timeline bucket for a resource type [GET]
++ Parameters
+
+    + projectId (string) ... ID of the project
+    + dateGrouping (string) ... `week` or `month` - method by which to group the contained resources according to date rule
+    + groupKey (string) ... timeline bucket key
+    + resourceTypeId (string) ... ID of the resource type  
+        
++ Request
+    
+    + Headers
+        
+            Accept: application/json
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "object":{
+                    "href": "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/requirements",
+                    "url": "http://devppm.daptiv.com/_api/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/requirements",
+                    "schemaUrl" : "...",
+                    "data":{
+                        "resourceType" : "/resourceType/50",
+                        "units" : {
+                            "time" : 60,
+                            "fte" : 1.5,
+                            "externalBillingRate": {
+                                "rate": 50,
+                                "id": "...",
+                                "label": "from user"
+                            },
+                            "internalBillingRate": {
+                                "rate": 50,
+                                "id": "...",
+                                "label": "from user"
+                            }
+                        }
+                    }
+                }
+            }
+
+## Allocations for a given bucket in a resource type resource plan [/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/allocations]
+### Return the collection of allocations in a project timeline bucket for a resource type [GET]
++ Parameters
+
+    + projectId (string) ... ID of the project
+    + dateGrouping (string) ... `week` or `month` - method by which to group the contained resources according to date rule
+    + groupKey (string) ... timeline bucket key
+    + resourceTypeId (string) ... ID of the resource type  
+        
++ Request
+    
+    + Headers
+        
+            Accept: application/json
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "object":{
+                    "href": "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/allocations",
+                    "url": "http://devppm.daptiv.com/_api/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/allocations",
+                    "schemaUrl" : "...",
+                    "items":[
+                        "projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/allocations/1",
+                        "projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/allocations/2",
+                        "projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/allocations/3"
+                    ]
+                }
+            }
+   
+## Individual allocation for a given bucket in a resource type resource plan [/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/allocations/{allocationId}]
+### Return the allocation information with the data constrained by the {dateGrouping} and {groupKey} [GET]
++ Parameters
+
+    + projectId (string) ... ID of the project
+    + dateGrouping (string) ... `week` or `month` - method by which to group the contained resources according to date rule
+    + groupKey (string) ... timeline bucket key
+    + resourceTypeId (string) ... ID of the resource type 
+    + allocationId (string) ... ID of the allocation
+
++ Request
+    
+    + Headers
+        
+            Accept: application/json
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "object":{
+                    "href": "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/allocations/{allocationId}",
+                    "url": "http://devppm.daptiv.com/_api/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/allocations/{allocationId}",
+                    "schemaUrl" : "...",
+                    "data":{
+                        "id" : "...",
+                        "resourceRequirement" : "/resourceRequirement/1",
+                        "requestedFrom" : "/user/1",
+                        "requestedBy" : "/user/2",
+                        "resource" : "/user/4",
+                        "resourceType" : "/resourceType/10",
+                        "units" : {
+                            "time" : 60,
+                            "fte" : 1.5,
+                            "externalBillingRate": {
+                                "rate": 50,
+                                "id": "...",
+                                "label": "from user"
+                            },
+                            "internalBillingRate": {
+                                "rate": 50,
+                                "id": "...",
+                                "label": "from user"
+                            }
+                        }
+                    }
+                }
+            }
+
+## Task assignments for a given bucket in a resource type resource plan [/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/taskassignments]
+### Return the task assignment timeline bucket for a resource type [GET]
++ Parameters
+
+    + projectId (string) ... ID of the project
+    + dateGrouping (string) ... `week` or `month` - method by which to group the contained resources according to date rule
+    + groupKey (string) ... timeline bucket key
+    + resourceTypeId (string) ... ID of the resource type  
+        
++ Request
+    
+    + Headers
+        
+            Accept: application/json
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "object":{
+                    "href": "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/taskassignments",
+                    "url": "http://devppm.daptiv.com/_api/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/taskassignments",
+                    "schemaUrl" : "...",
+                    "data":{}
+                }
+            }       
+   
+            
+## Work entries for a given bucket in a resource type resource plan [/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/workentries]
+### Return the work entries timeline bucket for a resource type [GET]
++ Parameters
+
+    + projectId (string) ... ID of the project
+    + dateGrouping (string) ... `week` or `month` - method by which to group the contained resources according to date rule
+    + groupKey (string) ... timeline bucket key
+    + resourceTypeId (string) ... ID of the resource type  
+        
++ Request
+    
+    + Headers
+        
+            Accept: application/json
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "object":{
+                    "href": "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/workentries",
+                    "url": "http://devppm.daptiv.com/_api/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/workentries",
+                    "schemaUrl" : "...",
+                    "data":{ }
+                }
+            }              
