@@ -54,8 +54,8 @@ Resource Plan
                 }
             }
             
-## Resource Plan timeline group [/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}]
-### Return the project timeline plan for a timeline group [GET]
+## Resource plan timeline group [/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}]
+### Return the project resource plan a timeline group [GET]
 + Parameters
 
     + projectId (string) ... ID of the project
@@ -86,8 +86,8 @@ Resource Plan
             }
           
 
-## Resource plan bucket for a resource type in a bucket [/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}]
-### Return the project timeline bucket for a resource type [GET]
+## Resource type plan grouped by the date group [/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}]
+### Return the resource type plan for the given date group [GET]
 + Parameters
 
     + projectId (string) ... ID of the project
@@ -121,8 +121,8 @@ Resource Plan
             }
 
 
-## Requirements for a given bucket in a resource type resource plan [/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/requirements]
-### Return the requirement timeline bucket for a resource type [GET]
+## Requirement for the resource type within the given date group [/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/requirements]
+### Return the requirement information within the given date group [GET]
 + Parameters
 
     + projectId (string) ... ID of the project
@@ -157,8 +157,8 @@ Resource Plan
                 }
             }
 
-## Allocations for a given bucket in a resource type resource plan [/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/allocations]
-### Return the collection of allocations in a project timeline bucket for a resource type [GET]
+## Allocations for the resource type within the given date group [/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/allocations]
+### Return the collection of allocations for the resource type within the date group [GET]
 + Parameters
 
     + projectId (string) ... ID of the project
@@ -189,7 +189,7 @@ Resource Plan
                 }
             }
    
-## Individual allocation for a given bucket in a resource type resource plan [/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/allocations/{allocationId}]
+## Individual allocation information within the given date group [/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/allocations/{allocationId}]
 ### Return the allocation information with the data constrained by the {dateGrouping} and {groupKey} [GET]
 + Parameters
 
