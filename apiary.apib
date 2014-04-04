@@ -44,12 +44,12 @@ Resource Plan
                                     "endDate": "...",
                                     "groupKey" : "201403"
                                 }
+                            ],
+                            "children": [
+                                "resourceplans/{dateGrouping}/201401",
+                                "resourceplans/{dateGrouping}/201402",
+                                "resourceplans/{dateGrouping}/201403"                           
                             ]
-                        ],
-                        "items":[
-                            "resourceplans/{dateGrouping}/201401",
-                            "resourceplans/{dateGrouping}/201402",
-                            "resourceplans/{dateGrouping}/201403"
                         ]
                 }
             }
@@ -111,14 +111,12 @@ Resource Plan
                     "url": "http://devppm.daptiv.com/_api/projects/{projectId}/resourceplans/{dateGrouping}/{resourceTypeId}",
                     "schemaUrl" : "...",
                     "data" : {
-                        "resourceType" : "resourceType/{resourceTypeId}"
-                    },
-                    "items":[
-                        "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/requirements",
-                        "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/allocations",
-                        "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/taskassignments",
-                        "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/workentries"
-                    ]
+                        "resourceType" : "resourceType/{resourceTypeId}",
+                        "requirement" : "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/requirement",
+                        "allocations" : "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/allocations",
+                        "taskAssignments" : "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/taskAssignments",
+                        "workEntries" : "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/workEntries"
+                    }
                 }
             }
 
@@ -145,23 +143,15 @@ Resource Plan
             {
                 "object":{
                     "href": "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/requirements",
-                    "url": "http://devppm.daptiv.com/_api/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/requirements",
+                    "url": "http://devppm.daptiv.com/_api/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/requirement",
                     "schemaUrl" : "...",
                     "data":{
                         "resourceType" : "/resourceType/50",
                         "units" : {
                             "time" : 60,
                             "fte" : 1.5,
-                            "externalBillingRate": {
-                                "rate": 50,
-                                "id": "...",
-                                "label": "from user"
-                            },
-                            "internalBillingRate": {
-                                "rate": 50,
-                                "id": "...",
-                                "label": "from user"
-                            }
+                            "externalBillingRate": "billingRate/1",
+                            "internalBillingRate": "billingRate/2"
                         }
                     }
                 }
@@ -234,16 +224,8 @@ Resource Plan
                         "units" : {
                             "time" : 60,
                             "fte" : 1.5,
-                            "externalBillingRate": {
-                                "rate": 50,
-                                "id": "...",
-                                "label": "from user"
-                            },
-                            "internalBillingRate": {
-                                "rate": 50,
-                                "id": "...",
-                                "label": "from user"
-                            }
+                            "externalBillingRate": "billingRate/12",
+                            "internalBillingRate": "billingRate/21"
                         }
                     }
                 }
@@ -273,10 +255,20 @@ Resource Plan
                     "href": "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/taskassignments",
                     "url": "http://devppm.daptiv.com/_api/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/taskassignments",
                     "schemaUrl" : "...",
-                    "data":{}
+                    "items":[
+                        {
+                            "resource" : "user/2",
+                            "sum" : 30
+                        },
+                        {
+                            "resource" : "user/2",
+                            "sum" : 30
+                        }
+                    ]
                 }
-            }       
-   
+            }    
+            
+  
             
 ## Work entries for a given bucket in a resource type resource plan [/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/workentries]
 ### Return the work entries timeline bucket for a resource type [GET]
@@ -302,6 +294,15 @@ Resource Plan
                     "href": "/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/workentries",
                     "url": "http://devppm.daptiv.com/_api/projects/{projectId}/resourceplans/{dateGrouping}/{groupKey}/{resourceTypeId}/workentries",
                     "schemaUrl" : "...",
-                    "data":{ }
+                    "items":[
+                        {
+                            "resource" : "user/2",
+                            "sum" : 30
+                        },
+                        {
+                            "resource" : "user/2",
+                            "sum" : 30
+                        }
+                    ]
                 }
             }              
